@@ -1,0 +1,17 @@
+version: '3.8'
+
+networks:
+  ventas_network:
+    driver: bridge
+
+services:
+  mysql_db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql123
+      MYSQL_DATABASE: ventas_mysql
+    volumes:
+      - ./DB/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - ventas_network
+
